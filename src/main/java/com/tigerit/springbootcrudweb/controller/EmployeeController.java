@@ -55,9 +55,9 @@ public class EmployeeController {
         if (result.hasErrors()) {
             return "error";
         }
-        RestTemplate restTemplate=new RestTemplate();
-        restTemplate.postForObject("http://localhost:8081/emp/save", employee,ResponseEntity.class);
         System.out.println(employee.toString());
+        RestTemplate restTemplate=new RestTemplate();
+        restTemplate.postForObject("http://localhost:8081/emp/save", employee,Employee.class);
         return "employeeRegistrationSuccessful";
     }
 }

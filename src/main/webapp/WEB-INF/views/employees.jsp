@@ -82,8 +82,9 @@
             <th style="width:5%;">Id</th>
             <th style="width:15%;">Name</th>
             <th style="width:15%;">Title</th>
-            <th style="width:10%;">Email</th>
+            <th style="width:15%;">Email</th>
             <th style="width:25%;">Team Name</th>
+            <th style="width:5%">Team Id</th>
             <th style="width:10%;">Joined Date</th>
             <th style="width:10%;">Mobile</th>
             <th style="width:10%;">Action</th>
@@ -95,6 +96,7 @@
                 <td>${employee.employeeDesignation}</td>
                 <td>${employee.employeeEmail}</td>
                 <td>${employee.departmentName}</td>
+                <td>${employee.departmentId}</td>
                 <td>${employee.joiningDate}</td>
                 <td>${employee.employeeMobile}</td>
                 <td>${"null"}</td>

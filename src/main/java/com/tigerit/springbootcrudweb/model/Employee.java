@@ -115,7 +115,13 @@ public class Employee implements Serializable {
         this.joiningDate = joiningDate;
     }
 
-    public Employee(@NotBlank String employeeName,@NotBlank  String employeeDesignation,@NotBlank  String employeeEmail,@NotBlank  String employeeMobile,@NotBlank  String departmentName,@NotNull Long departmentId, @NotBlank String joiningDate) {
+    public Employee(@NotBlank String employeeName,
+                    @NotBlank  String employeeDesignation,
+                    @NotBlank  String employeeEmail,
+                    @NotBlank  String employeeMobile,
+                    @NotBlank  String departmentName,
+                    @NotNull Long departmentId,
+                    @NotBlank String joiningDate) {
         this.employeeName = employeeName;
         this.employeeDesignation = employeeDesignation;
         this.employeeEmail = employeeEmail;

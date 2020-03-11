@@ -45,31 +45,41 @@
             color: #bce8f1;
         }
     </style>
-    <title>Getting Started: Handling Form Submission</title>
+    <title>Form Submission</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-<h1>Form</h1>
+<h1>
+    Employee Information Table
+</h1>
 
 <form:form method="POST" action="/employeeRegistrationForm" modelAttribute="employee">
-    <p><form:label path="employeeName">Name</form:label>
-    <form:input path="employeeName" /></p>
+    <p>
+        <form:label path="employeeName">Name</form:label>
+        <form:input path="employeeName" />
 
-    <p><form:label path="employeeEmail">Email</form:label>
-    <form:input path="employeeEmail" /></p>
-    <p><form:label path="employeeMobile">Mobile</form:label>
-        <form:input path="employeeMobile" /></p>
+        <form:label path="employeeEmail">Email</form:label>
+        <form:input path="employeeEmail" />
+    </p>
+    <p>
+        <form:label path="employeeMobile">Mobile</form:label>
+        <form:input path="employeeMobile" />
 
-    <p><form:label path="employeeDesignation">Designation</form:label>
-        <form:input path="employeeDesignation" /></p>
-    <p><form:label path="departmentName">Department/Team</form:label>
-        <form:input path="departmentName" /></p>
+        <form:label path="employeeDesignation">Designation</form:label>
+        <form:input path="employeeDesignation" />
+    </p>
 
-    <p><form:label path="departmentId">Department/Team Id</form:label>
-        <form:input path="departmentId" /></p>
+    <p>
+        <form:label path="departmentName">Department/Team</form:label>
+        <form:input path="departmentName" />
 
-    <p><form:label path="joiningDate">Date of Joining</form:label>
-        <form:input path="joiningDate" /></p>
+        <form:label path="departmentId">Department/Team Id</form:label>
+        <form:input path="departmentId" />
+    </p>
+
+    <p>
+        <form:label path="joiningDate">Date of Joining</form:label>
+        <form:input path="joiningDate" />
 
     <input type="submit" value="Submit" />
 </form:form>
