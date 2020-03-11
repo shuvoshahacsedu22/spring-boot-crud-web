@@ -1,15 +1,18 @@
 package com.tigerit.springbootcrudweb.model;
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
 @Entity
-@Table(name = "employee_table")
 @EntityListeners(AuditingEntityListener.class)
-public class Employee {
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class Employee implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(updatable = false, nullable = false)
@@ -29,7 +32,7 @@ public class Employee {
     @NotBlank
     @Column(nullable = false)
     private String departmentName;
-    @NotBlank
+    @NotNull
     @Column(nullable = false)
     private Long departmentId;
     @NotBlank
@@ -48,11 +51,11 @@ public class Employee {
                 ", joiningDate='" + joiningDate + '\'' +
                 '}';
     }
-    public Long getemployeeId() {
+    public Long getEmployeeId() {
         return employeeId;
     }
 
-    public void setemployeeId(Long employeeId) {
+    public void setEmployeeId(Long employeeId) {
         this.employeeId = employeeId;
     }
 
@@ -96,11 +99,11 @@ public class Employee {
         this.departmentName = departmentName;
     }
 
-    public Long getdepartmentId() {
+    public Long getDepartmentId() {
         return departmentId;
     }
 
-    public void setdepartmentId(Long departmentId) {
+    public void setDepartmentId(Long departmentId) {
         this.departmentId = departmentId;
     }
 
@@ -112,8 +115,7 @@ public class Employee {
         this.joiningDate = joiningDate;
     }
 
-    public Employee(Long employeeId, String employeeName, String employeeDesignation, String employeeEmail, String employeeMobile, String departmentName, Long departmentId, String joiningDate) {
-        this.employeeId = employeeId;
+    public Employee(@NotBlank String employeeName,@NotBlank  String employeeDesignation,@NotBlank  String employeeEmail,@NotBlank  String employeeMobile,@NotBlank  String departmentName,@NotNull Long departmentId, @NotBlank String joiningDate) {
         this.employeeName = employeeName;
         this.employeeDesignation = employeeDesignation;
         this.employeeEmail = employeeEmail;
@@ -124,14 +126,14 @@ public class Employee {
 
     }
     public Employee(){
-        this.employeeId = null;
-        this.employeeName = null;
-        this.employeeDesignation = null;
-        this.employeeEmail = null;
-        this.employeeMobile = null;
-        this.departmentName = null;
-        this.departmentId = null;
-        this.joiningDate = null;
+//        this.employeeId = 1L;
+//        this.employeeName = "a";
+//        this.employeeDesignation = "a";
+//        this.employeeEmail = "a";
+//        this.employeeMobile = "a";
+//        this.departmentName = "a";
+//        this.departmentId = 2L;
+//        this.joiningDate = "a";
 
     }
 }

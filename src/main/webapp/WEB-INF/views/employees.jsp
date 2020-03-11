@@ -104,7 +104,9 @@
     </table>
 <div>
     <span>
-        <button type="button" id="buttonAdd" style="float: right" onclick="myFunctionBUTTON()"> Add Employee</button>
+        <a href="/employeeRegistrationForm">
+            <button type="button" id="buttonAddNewEmployee" style="float: right" > Add Employee</button>
+        </a>
     </span>
 </div>
 </body>
