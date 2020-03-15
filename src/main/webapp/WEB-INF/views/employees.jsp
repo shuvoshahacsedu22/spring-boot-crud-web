@@ -80,6 +80,7 @@
         </div>
     </div>
 </div>
+
     <table id="employeesTable" >
         <thead>
         <tr class="header">
@@ -125,6 +126,8 @@
         </tr>
         </tfoot>
     </table>
+
+
 <div>
     <span>
         <a href="/employeeRegistrationForm">

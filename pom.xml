@@ -70,7 +70,10 @@
       <artifactId>jackson-databind</artifactId>
       <version>2.9.4</version>
     </dependency>
-
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-jpa</artifactId>
+    </dependency>
       <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-thymeleaf -->
       <dependency>
         <groupId>org.springframework.boot</groupId>
@@ -86,7 +89,11 @@
       <version>1.4.197</version>
       <scope>runtime</scope>
     </dependency>
-
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+    </dependency>
     <!-- https://mvnrepository.com/artifact/net.sourceforge.nekohtml/nekohtml -->
     <dependency>
       <groupId>net.sourceforge.nekohtml</groupId>
@@ -101,6 +108,10 @@
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
         <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
+        <plugin>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-maven-plugin</artifactId>
+        </plugin>
         <plugin>
           <artifactId>maven-clean-plugin</artifactId>
           <version>3.1.0</version>
