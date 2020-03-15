@@ -13,6 +13,7 @@ import java.util.ArrayList;
 @Controller
 public class DepartmentController {
 
+    //returns
     @GetMapping("/departments")
     public String getDepartments(Model model) {
         RestTemplate restTemplate = new RestTemplate();

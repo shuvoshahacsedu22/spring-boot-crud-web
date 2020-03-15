@@ -2,47 +2,51 @@ package com.tigerit.springbootcrudweb.controller;
 
 
 import com.tigerit.springbootcrudweb.model.Employee;
-import org.springframework.http.ResponseEntity;
+import com.tigerit.springbootcrudweb.service.EmployeeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class EmployeeController {
-
+    private final EmployeeService employeeService;
     private Employee employee;
     private Model model;
 
+    public EmployeeController(EmployeeService employeeService) {
+        this.employeeService = employeeService;
+    }
+
+    @GetMapping("/")
+    public String goHome(){
+        return "employeesDataTable";
+    }
+
     @GetMapping("/employees")
     public String getEmployees(Model model) {
-        RestTemplate restTemplate = new RestTemplate();
-        String urlGETList = "http://localhost:8081/emp/find-all";
-        ResponseEntity<Employee[]> response = restTemplate.getForEntity(urlGETList, Employee[].class);
-        Employee[] employees = response.getBody();
         //assertThat(employee.getFirst_name(), notNullValue());
         //assertThat(employee.getId(), is(1L));
-        model.addAttribute("employees",employees);
+        List<Employee> employeesList = employeeService.getEmployeesList();
+        Employee[] employeesArray = new Employee[employeesList.size()];
+        employeesList.toArray(employeesArray);
+        model.addAttribute("employees",employeesArray);
         return "employees";
     }
     @GetMapping("/employees/{id}")
     public String getEmployees(@PathVariable String id, Model model) {
-        model.addAttribute("ide", id);
-        RestTemplate restTemplate = new RestTemplate();
-        String urlGETList = "http://localhost:8081/emp/find-by-id/"+id;
-
-        ResponseEntity<Employee> response = restTemplate.getForEntity(urlGETList, Employee.class);
-        Employee employee = response.getBody();
         //assertThat(employee.getFirst_name(), notNullValue());
         //assertThat(employee.getId(), is(1L));
-        ArrayList<Employee> employees=new ArrayList<Employee>();
-        employees.add(employee);
-
-        model.addAttribute("employees",employees);
+        List<Employee> employeesList = employeeService.getEmployeesList(id);
+        Employee[] employeesArray = new Employee[employeesList.size()];
+        employeesList.toArray(employeesArray);
+        model.addAttribute("employees",employeesArray);
         return "employees";
     }
     @GetMapping("/employeeRegistrationForm")
@@ -56,8 +60,7 @@ public class EmployeeController {
             return "error";
         }
         System.out.println(employee.toString());
-        RestTemplate restTemplate=new RestTemplate();
-        restTemplate.postForObject("http://localhost:8081/emp/save", employee,Employee.class);
+        employeeService.registerEmployee(employee);
         return "employeeRegistrationSuccessful";
     }
 }

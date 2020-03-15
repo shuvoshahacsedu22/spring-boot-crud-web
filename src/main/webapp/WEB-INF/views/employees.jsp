@@ -7,10 +7,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <script src="${pageContext.request.contextPath}/js/lib/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/lib/bootstrap.min.js"></script>
 
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/css/common.css" rel="stylesheet">
-    <script src="/js/src/myFunctionForSearch.js"></script>
+
+    <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/common.css" rel="stylesheet">
+    <script src="${pageContext.request.contextPath}/js/src/myFunctionForSearch.js"></script>
 
     <style>
         table {
@@ -48,7 +51,7 @@
 
 <div>
     <span style="background-color: #dddddd">
-<h2 style="alignment: center">Employee Information Table</h2>
+<h2 style="alignment: center">Employee Information Table(Without Data Table/Ajax Data Source)</h2>
         </span>
 </div>
 
@@ -77,7 +80,8 @@
         </div>
     </div>
 </div>
-    <table id="myTable">
+    <table id="employeesTable" >
+        <thead>
         <tr class="header">
             <th style="width:5%;">Id</th>
             <th style="width:15%;">Name</th>
@@ -89,6 +93,9 @@
             <th style="width:10%;">Mobile</th>
             <th style="width:10%;">Action</th>
         </tr>
+        </thead>
+
+
         <c:forEach items="${employees}" var="employee">
             <tr>
                 <td>${employee.employeeId}</td>
@@ -103,6 +110,20 @@
             </tr>
 
         </c:forEach>
+
+        <tfoot>
+        <tr class="header">
+            <th style="width:5%;">Id</th>
+            <th style="width:15%;">Name</th>
+            <th style="width:15%;">Title</th>
+            <th style="width:15%;">Email</th>
+            <th style="width:25%;">Team Name</th>
+            <th style="width:5%">Team Id</th>
+            <th style="width:10%;">Joined Date</th>
+            <th style="width:10%;">Mobile</th>
+            <th style="width:10%;">Action</th>
+        </tr>
+        </tfoot>
     </table>
 <div>
     <span>

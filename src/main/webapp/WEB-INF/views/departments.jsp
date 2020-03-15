@@ -3,11 +3,18 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
+
 <!DOCTYPE html>
 <html>
 <head>
-    <link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
-    <link href="${contextPath}/resources/css/common.css" rel="stylesheet">
+    <script src="${pageContext.request.contextPath}/js/lib/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/lib/bootstrap.min.js"></script>
+
+
+    <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/common.css" rel="stylesheet">
+    <script src="${pageContext.request.contextPath}/js/src/myFunctionForSearch.js"></script>
+
     <style>
         table {
             border-collapse: collapse;
@@ -35,14 +42,13 @@
             font-family: arial;
         }
         button{
-            style:"background-color: cornflowerblue";
+            background-color: #2e6da4;
+            color: #bce8f1;
         }
     </style>
 </head>
-
 <body>
-
-<h2>Department Information Table</h2>
+<h2>Departments Information Table</h2>
 
 <label for="myInput1">Department ID</label>
 <input type="text" id="myInput1" onkeyup="myFunction1()" placeholder="">

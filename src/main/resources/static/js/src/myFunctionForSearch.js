@@ -3,7 +3,7 @@ function myFunctionENAME() {
     var input, filter, table, tr, td, i, txtValue;
     input = document.getElementById("myInputENAME");
     filter = input.value.toUpperCase();
-    table = document.getElementById("myTable");
+    table = document.getElementById("employeesTable");
     tr = table.getElementsByTagName("tr");
 
     // Loop through all table rows, and hide those who don't match the search query
@@ -25,7 +25,7 @@ function myFunctionEID() {
     var input, filter, table, tr, td, i, txtValue;
     input = document.getElementById("myInputEID");
     filter = input.value.toUpperCase();
-    table = document.getElementById("myTable");
+    table = document.getElementById("employeesTable");
     tr = table.getElementsByTagName("tr");
 
     // Loop through all table rows, and hide those who don't match the search query
@@ -47,7 +47,7 @@ function myFunctionDEPT() {
     var input, filter, table, tr, td, i, txtValue;
     input = document.getElementById("myInputDEPT");
     filter = input.value.toUpperCase();
-    table = document.getElementById("myTable");
+    table = document.getElementById("employeesTable");
     tr = table.getElementsByTagName("tr");
 
     // Loop through all table rows, and hide those who don't match the search query
@@ -69,7 +69,7 @@ function myFunctionEMAIL() {
     var input, filter, table, tr, td, i, txtValue;
     input = document.getElementById("myInputEMAIL");
     filter = input.value.toUpperCase();
-    table = document.getElementById("myTable");
+    table = document.getElementById("employeesTable");
     tr = table.getElementsByTagName("tr");
 
     // Loop through all table rows, and hide those who don't match the search query
@@ -108,7 +108,7 @@ function myFunctionBUTTON(){
     filterENAME = inputENAME.value.toUpperCase();
 
 
-    table = document.getElementById("myTable");
+    table = document.getElementById("employeesTable");
 
 
 
