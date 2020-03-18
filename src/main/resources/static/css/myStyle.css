@@ -1,0 +1,29 @@
+table {
+    border-collapse: collapse;
+    border: 1px grey;
+    width: 100%;
+    align: center;
+
+}
+
+td, th {
+    border: 0.5px solid grey;
+    align: center;
+}
+th{
+    border: 1px solid black;
+}
+td{
+    height: 5px;
+}
+tr:nth-child(even) {
+    background-color: #ffffff;
+    height: 5px;
+}
+font{
+    font-family: arial;
+}
+button{
+    background-color: #2e6da4;
+    color: #bce8f1;
+}

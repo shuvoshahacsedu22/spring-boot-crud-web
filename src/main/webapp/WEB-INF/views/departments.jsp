@@ -13,7 +13,7 @@
 
     <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/css/common.css" rel="stylesheet">
-    <script src="${pageContext.request.contextPath}/js/src/myFunctionForSearch.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/src/myFunctionsForSearch.js"></script>
 
     <style>
         table {

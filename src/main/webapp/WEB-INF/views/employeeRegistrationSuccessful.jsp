@@ -2,7 +2,7 @@
 <html xmlns:th="https://www.thymeleaf.org">
 <head><link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/common.css" rel="stylesheet">
-    <script src="/js/src/myFunctionForSearch.js"></script>
+    <script src="/static/js/src/myFunctionsForSearch.js"></script>
 
     <style>
         table {

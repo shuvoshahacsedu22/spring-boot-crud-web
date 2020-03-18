@@ -28,7 +28,7 @@ public class EmployeeController {
 
     @GetMapping("/")
     public String goHome(){
-        return "employeesDataTable";
+        return "index";
     }
 
     @GetMapping("/employees")
@@ -36,16 +36,6 @@ public class EmployeeController {
         //assertThat(employee.getFirst_name(), notNullValue());
         //assertThat(employee.getId(), is(1L));
         List<Employee> employeesList = employeeService.getEmployeesList();
-        Employee[] employeesArray = new Employee[employeesList.size()];
-        employeesList.toArray(employeesArray);
-        model.addAttribute("employees",employeesArray);
-        return "employees";
-    }
-    @GetMapping("/employees/{id}")
-    public String getEmployees(@PathVariable String id, Model model) {
-        //assertThat(employee.getFirst_name(), notNullValue());
-        //assertThat(employee.getId(), is(1L));
-        List<Employee> employeesList = employeeService.getEmployeesList(id);
         Employee[] employeesArray = new Employee[employeesList.size()];
         employeesList.toArray(employeesArray);
         model.addAttribute("employees",employeesArray);

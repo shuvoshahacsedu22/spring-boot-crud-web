@@ -7,96 +7,86 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <script src="${pageContext.request.contextPath}/js/lib/jquery.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/lib/bootstrap.min.js"></script>
 
-
+    <link href="${pageContext.request.contextPath}/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/css/common.css" rel="stylesheet">
-    <script src="${pageContext.request.contextPath}/js/src/myFunctionForSearch.js"></script>
+    <link href="${pageContext.request.contextPath}/css/myStyle.css" rel="stylesheet">
 
-    <style>
-        table {
-            border-collapse: collapse;
-            border: 1px grey;
-            width: 100%;
-            align: center;
+    <script src="${pageContext.request.contextPath}/js/lib/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/lib/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/lib/jquery.dataTables.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/src/myFunctionsForSearch.js"></script>
+    <script src="${pageContext.request.contextPath}/js/src/myFunctionsForDataTable.js"></script>
 
-        }
 
-        td, th {
-        border: 0.5px solid grey;
-        align: center;
-            }
-        th{
-            border: 1px solid black;
-        }
-        td{
-            height: 5px;
-        }
-        tr:nth-child(even) {
-            background-color: #ffffff;
-            height: 5px;
-        }
-        font{
-            font-family: arial;
-        }
-        button{
-            background-color: #2e6da4;
-            color: #bce8f1;
-        }
-    </style>
+    <script>
+        $(document).ready(function() {
+            myFunctionFillData(document.getElementById('employeesTable'));
+        } );
+    </script>
+
 </head>
-<body>
 
+<body>
+<h1>Employees Table</h1>
+
+<%--Header Title--%>
 <div>
     <span style="background-color: #dddddd">
-<h2 style="alignment: center">Employee Information Table(Without Data Table/Ajax Data Source)</h2>
-        </span>
+            <h2 style="alignment: center">Employee Information Table(With Data Table/Ajax Data Source)</h2>
+    </span>
 </div>
+
+<%--Search Button--%>
 
 <div>
     <span>
-        <button type="button" id="buttonSearch" style="float: right" onclick="myFunctionBUTTON()"> Search</button>
+        <button type="button" id="myButton" style="float: right" onclick="myFunctionForSearchOnButtonClick('employeesTable', ['employeeName','employeeId','departmentName','employeeEmail'] );"> Custom Search</button>
     </span>
 </div>
+
+<%--Search Boxes--%>
 <div class="container">
     <div class="center">
         <div class="row">
             <div>
-                <label for="myInputENAME">Employee Name</label>
-                <input align="left" type="text" id="myInputENAME"  placeholder="" onkeyup="myFunctionENAME()">
+                <label for="myTextBoxes_employeeName">Employee Name</label>
+                <input align="left" type="text" id="myTextBoxes_employeeName"  placeholder="" onkeyup="myFunctionForSearchInInputTextBoxes('employeesTable','employeeName');">
 
-                <label for="myInputEID">Employee ID</label>
-                <input align="right" type="text" id="myInputEID"  placeholder=""onkeyup="myFunctionEID()">
+                <label for="myTextBoxes_employeeId">Employee ID</label>
+                <input align="right" type="text" id="myTextBoxes_employeeId"  placeholder="" onkeyup="myFunctionForSearchInInputTextBoxes('employeesTable','employeeId');">
             </div >
-            <div >
-                <label for="myInputDEPT">Department/Team</label>
-                <input type="text" id="myInputDEPT"  placeholder=""onkeyup="myFunctionDEPT()">
 
-                <label for="myInputEMAIL">Email</label>
-                <input type="text" id="myInputEMAIL"  placeholder=""onkeyup="myFunctionEMAIL()">
+            <div >
+                <label for="myTextBoxes_departmentName">Department/Team</label>
+                <input type="text" id="myTextBoxes_departmentName"  placeholder="" onkeyup="myFunctionForSearchInInputTextBoxes('employeesTable','departmentName');">
+
+                <label for="myTextBoxes_employeeEmail">Email</label>
+                <input type="text" id="myTextBoxes_employeeEmail"  placeholder="" onkeyup="myFunctionForSearchInInputTextBoxes('employeesTable','employeeEmail');">
             </div>
         </div>
     </div>
 </div>
 
-    <table id="employeesTable" >
+    <table id="employeesTable" class="display" style="width:100%">
+        <!-- Header Table -->
         <thead>
         <tr class="header">
-            <th style="width:5%;">Id</th>
-            <th style="width:15%;">Name</th>
-            <th style="width:15%;">Title</th>
-            <th style="width:15%;">Email</th>
-            <th style="width:25%;">Team Name</th>
-            <th style="width:5%">Team Id</th>
-            <th style="width:10%;">Joined Date</th>
-            <th style="width:10%;">Mobile</th>
-            <th style="width:10%;">Action</th>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Title</th>
+            <th>Email</th>
+            <th>Mobile</th>
+            <th>Team Name</th>
+            <th>Team Id</th>
+            <th>Joined Date</th>
+
         </tr>
         </thead>
 
-
+<%--   Data table using JSTL tag for accessing model/docuement object/element: --%>
+<%--
         <c:forEach items="${employees}" var="employee">
             <tr>
                 <td>${employee.employeeId}</td>
@@ -111,23 +101,25 @@
             </tr>
 
         </c:forEach>
+--%>
 
+
+        <!-- Footer Table -->
         <tfoot>
         <tr class="header">
-            <th style="width:5%;">Id</th>
-            <th style="width:15%;">Name</th>
-            <th style="width:15%;">Title</th>
-            <th style="width:15%;">Email</th>
-            <th style="width:25%;">Team Name</th>
-            <th style="width:5%">Team Id</th>
-            <th style="width:10%;">Joined Date</th>
-            <th style="width:10%;">Mobile</th>
-            <th style="width:10%;">Action</th>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Title</th>
+            <th>Email</th>
+            <th>Mobile</th>
+            <th>Team Name</th>
+            <th>Team Id</th>
+            <th>Joined Date</th>
         </tr>
         </tfoot>
     </table>
 
-
+<%-- Registration button--%>
 <div>
     <span>
         <a href="/employeeRegistrationForm">
