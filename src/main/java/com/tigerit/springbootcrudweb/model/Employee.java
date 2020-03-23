@@ -1,5 +1,4 @@
 package com.tigerit.springbootcrudweb.model;
-import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -38,7 +37,10 @@ public class Employee implements Serializable {
     @NotBlank
     @Column(nullable = false)
     private String joiningDate;
-    @Override
+
+    @NotNull
+    private Long status;
+
     public String toString() {
         return "Employee{" +
                 "employeeId=" + employeeId +
@@ -49,6 +51,7 @@ public class Employee implements Serializable {
                 ", departmentName='" + departmentName + '\'' +
                 ", departmentId='" + departmentId + '\'' +
                 ", joiningDate='" + joiningDate + '\'' +
+                ", status='" + status + '\'' +
                 '}';
     }
     public Long getEmployeeId() {
@@ -115,6 +118,13 @@ public class Employee implements Serializable {
         this.joiningDate = joiningDate;
     }
 
+    public Long getStatus(){
+        return this.status;
+    }
+    public void setStatus(Long id){
+        this.status=status;
+    }
+
     public Employee(@NotBlank String employeeName,
                     @NotBlank  String employeeDesignation,
                     @NotBlank  String employeeEmail,
@@ -129,17 +139,20 @@ public class Employee implements Serializable {
         this.departmentName = departmentName;
         this.departmentId = departmentId;
         this.joiningDate = joiningDate;
+        this.status = 1L;
 
     }
     public Employee(){
-//        this.employeeId = 1L;
-//        this.employeeName = "a";
-//        this.employeeDesignation = "a";
-//        this.employeeEmail = "a";
-//        this.employeeMobile = "a";
-//        this.departmentName = "a";
-//        this.departmentId = 2L;
-//        this.joiningDate = "a";
+        this.employeeId = null;
+        this.employeeName = null;
+        this.employeeDesignation = null;
+        this.employeeEmail = null;
+        this.employeeMobile = null;
+        this.departmentName = null;
+        this.departmentId = null;
+        this.joiningDate = null;
+        this.joiningDate = null;
+        this.status = 1L;
 
     }
 }

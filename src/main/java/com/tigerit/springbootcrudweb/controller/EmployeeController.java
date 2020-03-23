@@ -35,17 +35,52 @@ public class EmployeeController {
     public String getEmployees(Model model) {
         //assertThat(employee.getFirst_name(), notNullValue());
         //assertThat(employee.getId(), is(1L));
-        List<Employee> employeesList = employeeService.getEmployeesList();
-        Employee[] employeesArray = new Employee[employeesList.size()];
-        employeesList.toArray(employeesArray);
-        model.addAttribute("employees",employeesArray);
+        /** As data table itself filling in the table so we don't etrive data for table
+         *
+         List<Employee> employeesList = employeeService.getEmployeesList();
+         Employee[] employeesArray = new Employee[employeesList.size()];
+         employeesList.toArray(employeesArray);
+         model.addAttribute("employees",employeesArray);
+         *
+         * */
         return "employees";
     }
+
     @GetMapping("/employeeRegistrationForm")
     public String registerEmployee(Model model) {
         model.addAttribute("employee",new Employee());
         return "employeeRegistrationForm";
     }
+
+    @GetMapping("/employeeUpdateForm")
+    public String updateEmployee(Model model) {
+        model.addAttribute("employee",new Employee());
+        return "employeeUpdateForm";
+    }
+    @PostMapping("/employeeUpdateForm")
+    public String updateEmployee(@ModelAttribute("employee") Employee employee, BindingResult result, ModelMap model) {
+        if (result.hasErrors()) {
+            return "error";
+        }
+        System.out.println(employee.toString());
+        employeeService.updateEmployee(employee);
+        return "employeeUpdateSuccessful";
+    }
+
+
+    @GetMapping("/employeeDeleteForm")
+    public String deleteEmployee(Model model) {
+        model.addAttribute("employee",new Employee());
+        return "employeeDeleteForm";
+    }
+    @PostMapping("/employeeDeleteForm")
+    public String deleteEmployee(@ModelAttribute("employee") Employee employee, BindingResult result, ModelMap mode) {
+        employeeService.deleteEmployee(employee);
+        return "employeeDeleteSuccessful";
+    }
+
+
+
     @PostMapping("/employeeRegistrationForm")
     public String registerEmployee(@ModelAttribute("employee") Employee employee, BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
@@ -55,4 +90,5 @@ public class EmployeeController {
         employeeService.registerEmployee(employee);
         return "employeeRegistrationSuccessful";
     }
+
 }

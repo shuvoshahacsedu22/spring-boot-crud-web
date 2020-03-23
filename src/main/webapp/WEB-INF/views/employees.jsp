@@ -38,37 +38,65 @@
     </span>
 </div>
 
-<%--Search Button--%>
-
-<div>
+<%--Search, Registration, Edit, Delete buttons--%>
+<div class="container" style="width: 100%">
+    <div style="float: left">
     <span>
-        <button type="button" id="myButton" style="float: right" onclick="myFunctionForSearchOnButtonClick('employeesTable', ['employeeName','employeeId','departmentName','employeeEmail'] );"> Custom Search</button>
+        <button type="button" id="myButtons_SearchEmployee" style="float: right" onclick="myFunctionForSearchOnButtonClick('employeesTable', ['employeeName','employeeId','departmentName','employeeEmail'] );"> Custom Search</button>
     </span>
+    </div>
+
+    <div style="float: right">
+    <span>
+        <a href="/employeeDeleteForm">
+            <button type="button" id="myButtons_DeleteEmployee" style="float: right" > Delete Employee</button>
+        </a>
+    </span>
+    </div>
+
+
+    <div style="float: right">
+    <span>
+        <a href="/employeeUpdateForm">
+            <button type="button" id="myButtons_UpdateEmployee" style="float: right" > Edit/Update Employee</button>
+        </a>
+    </span>
+    </div>
+
+    <div style="float: right;">
+    <span>
+        <a href="/employeeRegistrationForm">
+            <button type="button" id="myButton_AddNewEmployee" style="float: right" > Add Employee</button>
+        </a>
+    </span>
+    </div>
+
 </div>
 
-<%--Search Boxes--%>
-<div class="container">
-    <div class="center">
-        <div class="row">
-            <div>
+<%--Search Input Text Boxes--%>
+<div class="container" style="width: 100%">
+        <div >
+            <div class="container" style="float: left">
                 <label for="myTextBoxes_employeeName">Employee Name</label>
                 <input align="left" type="text" id="myTextBoxes_employeeName"  placeholder="" onkeyup="myFunctionForSearchInInputTextBoxes('employeesTable','employeeName');">
-
+            </div>
+            <div class="container" style="float: left">
                 <label for="myTextBoxes_employeeId">Employee ID</label>
                 <input align="right" type="text" id="myTextBoxes_employeeId"  placeholder="" onkeyup="myFunctionForSearchInInputTextBoxes('employeesTable','employeeId');">
             </div >
-
-            <div >
+            <div class="container" style="float: left">
                 <label for="myTextBoxes_departmentName">Department/Team</label>
                 <input type="text" id="myTextBoxes_departmentName"  placeholder="" onkeyup="myFunctionForSearchInInputTextBoxes('employeesTable','departmentName');">
-
+            </div>
+            <div class="container" style="float: left">
                 <label for="myTextBoxes_employeeEmail">Email</label>
                 <input type="text" id="myTextBoxes_employeeEmail"  placeholder="" onkeyup="myFunctionForSearchInInputTextBoxes('employeesTable','employeeEmail');">
             </div>
         </div>
-    </div>
 </div>
 
+<%-- Employee Table --%>
+<div class="container" style="width: 100%">
     <table id="employeesTable" class="display" style="width:100%">
         <!-- Header Table -->
         <thead>
@@ -118,14 +146,7 @@
         </tr>
         </tfoot>
     </table>
-
-<%-- Registration button--%>
-<div>
-    <span>
-        <a href="/employeeRegistrationForm">
-            <button type="button" id="buttonAddNewEmployee" style="float: right" > Add Employee</button>
-        </a>
-    </span>
 </div>
+
 </body>
 </html>

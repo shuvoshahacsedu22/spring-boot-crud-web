@@ -1,6 +1,7 @@
 package com.tigerit.springbootcrudweb.service;
 
 import com.tigerit.springbootcrudweb.model.Employee;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -34,15 +35,22 @@ public class EmployeeService {
         employees.add(employee);
         return employees;
     }
-    //register new employee to database with save api
+    //register new employee to database with save api which takes all the field excluding id of the employee
     public void registerEmployee(Employee employee){
         RestTemplate restTemplate=new RestTemplate();
         restTemplate.postForObject("http://localhost:8081/emp/save", employee,Employee.class);
     }
 
-    //  <!-- TODO need to complete update employee service-->
-    public void updateEmployee(Employee employee){
-
+    //register new employee to database with update-by-id api which takes all the field including id of the employee
+    public void updateEmployee(Employee updatedInstance){
+        RestTemplate restTemplate = new RestTemplate();
+        String employeeResourceUrl="http://localhost:8081/emp/update-by-id/" +updatedInstance.getEmployeeId().toString();
+        restTemplate.put(employeeResourceUrl,updatedInstance);
+    }
+    public void deleteEmployee(Employee deleteInstance){
+        RestTemplate restTemplate = new RestTemplate();
+        String employeeResourceUrl = "http://localhost:8081/emp/delete-by-id/" +deleteInstance.getEmployeeId().toString();
+        restTemplate.delete(employeeResourceUrl);
 
     }
 }

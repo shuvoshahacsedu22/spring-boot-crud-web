@@ -50,7 +50,7 @@
 </head>
 <body>
 <h1>
-    Employee Information Table
+   New Employee Information Table
 </h1>
 
 <form:form method="POST" action="/employeeRegistrationForm" modelAttribute="employee">
