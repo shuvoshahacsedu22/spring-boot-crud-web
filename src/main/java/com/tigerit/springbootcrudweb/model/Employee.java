@@ -39,6 +39,7 @@ public class Employee implements Serializable {
     private String joiningDate;
 
     @NotNull
+    @Column(columnDefinition = "bigint default 1")
     private Long status;
 
     public String toString() {

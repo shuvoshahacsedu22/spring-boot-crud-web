@@ -1,4 +1,7 @@
 function fetchData(stat) {
+    // here the 'stat' parameter only stating
+    // that the function is beign invoked from
+    // which file either updaform jsp or deletefomr jsp
 
     var input, filter;
     input = document.getElementById("myTextBoxes_employeeId");
