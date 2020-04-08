@@ -22,6 +22,7 @@ public class EmployeeService {
         //return employees; //returns array of object instead of list
         return  Arrays.asList(employees);//returns list instead of arrays
     }
+
     //calls api to retrieve list of pojo object with given id of the object(Employee)
     //overloaded method
     public List<Employee> getEmployeesList(String id) {
@@ -35,6 +36,7 @@ public class EmployeeService {
         employees.add(employee);
         return employees;
     }
+
     //register new employee to database with save api which takes all the field excluding id of the employee
     public void registerEmployee(Employee employee){
         RestTemplate restTemplate=new RestTemplate();
@@ -43,14 +45,16 @@ public class EmployeeService {
 
     //register new employee to database with update-by-id api which takes all the field including id of the employee
     public void updateEmployee(Employee updatedInstance){
+        //System.out.println("updateInstance reached"+updatedInstance.toString());
         RestTemplate restTemplate = new RestTemplate();
         String employeeResourceUrl="http://localhost:8081/emp/update-by-id/" +updatedInstance.getEmployeeId().toString();
         restTemplate.put(employeeResourceUrl,updatedInstance);
     }
+
+    //delete existing employee
     public void deleteEmployee(Employee deleteInstance){
         RestTemplate restTemplate = new RestTemplate();
         String employeeResourceUrl = "http://localhost:8081/emp/delete-by-id/" +deleteInstance.getEmployeeId().toString();
         restTemplate.delete(employeeResourceUrl);
-
     }
 }

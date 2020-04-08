@@ -150,7 +150,7 @@ public class Employee implements Serializable {
         this.employeeEmail = null;
         this.employeeMobile = null;
         this.departmentName = null;
-        this.departmentId = null;
+        this.departmentId = 0L;
         this.joiningDate = null;
         this.joiningDate = null;
         this.status = 1L;

@@ -1,6 +1,6 @@
-function myFunctionFillData(myTables_tableId)
+function myFunctionFillData(myTables_tableId)//the 'myTables_tableId' should have columns accordingly
 {
-    $(myTables_tableId).DataTable( {
+    var table=$(myTables_tableId).DataTable( {
         "sAjaxSource": "/restemployees",
         "sAjaxDataProp":"",
         "order":[[0,"asc"]],
@@ -15,4 +15,8 @@ function myFunctionFillData(myTables_tableId)
             { "mData": "joiningDate" }
         ]
     } );
+    setInterval( function () {
+        table.ajax.reload();
+    }, 3000 );
+
 }

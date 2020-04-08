@@ -1,9 +1,10 @@
 function fetchData(stat) {
     // here the 'stat' parameter only stating
     // that the function is beign invoked from
-    // which file either updaform jsp or deletefomr jsp
+    // which file either updateform jsp or deleteform jsp
 
     var input, filter;
+    var url = "/restemployees/"
     input = document.getElementById("myTextBoxes_employeeId");
     id = input.value.toUpperCase();
     if(id==='') id='0';
@@ -18,9 +19,9 @@ function fetchData(stat) {
             var employee=obj[0];
 
             if(stat==0)
-                document.getElementById("myParagraph_errorComment0").innerHTML ='Employee with id'+id+'exist. Update in the following boxes.';
+                document.getElementById("myParagraph_errorComment0").innerHTML ='Employee with id '+id+' exist. Update in the following boxes.';
             else
-                document.getElementById("myParagraph_errorComment1").innerHTML ='Employee with id'+id+'exist. Click Submit to delete.';
+                document.getElementById("myParagraph_errorComment1").innerHTML ='Employee with id '+id+' exist. Click Submit to delete.';
 
             document.getElementById('myForms_employeeUpdateForm_employeeName').setAttribute('value',employee.employeeName);
             //document.getElementById('myForms_employeeUpdateForm_employeeName').setAttribute('placeholder',employee.employeeName);
@@ -36,16 +37,17 @@ function fetchData(stat) {
             commonFragment();
 
             if(stat==0) //means it is coming from employeeupdatejsp form else deleteemployeejsp form
-                document.getElementById("myParagraph_errorComment0").innerHTML ='Employee with id'+id+'does not exist';
+                document.getElementById("myParagraph_errorComment0").innerHTML ='Employee with id '+id+' does not exist';
             else
-                document.getElementById("myParagraph_errorComment1").innerHTML ='Employee with id'+id+'does not exist';
+                document.getElementById("myParagraph_errorComment1").innerHTML ='Employee with id '+id+' does not exist';
 
         }
     };
-    xhttp.open("GET", "/restemployees/"+id, true);
+    //here rest /restemployees/id is the same project handler api service
+    xhttp.open("GET", url+id, true);
     xhttp.send();
 }
-
+//this commonFragment fills in the form input with existing employee Information when id is pressed...
 function  commonFragment() {
     //sets form field value to null and placeholder value to intended meaning
     document.getElementById('myForms_employeeUpdateForm_employeeName').setAttribute('value','');
