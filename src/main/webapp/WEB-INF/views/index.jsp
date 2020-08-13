@@ -38,7 +38,9 @@
 <!-- The Modal -->
 
 <button type="button" class="btn btn-info btn-lg" id="myButtons_modalForNewEmployee">Open Modal</button>
-
+<div>
+<a href="/iTextTutorials"></a>
+</div>
 <div class="modal fade" id="myModals_modalForNewEmployee" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
     <div class="modal-dialog" role="document">
         <div class="modal-content">

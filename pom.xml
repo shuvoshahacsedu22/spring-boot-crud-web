@@ -19,7 +19,13 @@
     <maven.compiler.target>1.7</maven.compiler.target>
     <start-class>com.tigerit.springbootcrudweb.SpringBootCrudWeb</start-class>
   </properties>
-
+  <repositories>
+    <repository>
+      <id>my-repo1</id>
+      <name>your custom repo1</name>
+      <url> https://repo.itextsupport.com/releases</url>
+    </repository>
+  </repositories>
   <dependencies>
 
     <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter -->
@@ -103,7 +109,68 @@
       <version>1.9.21</version><!--$NO-MVN-MAN-VER$ -->
     </dependency>
 
+    <!-- iTextPdf creation dependencies-->
+    <!-- -->
 
+    <dependency>
+      <groupId>com.itextpdf</groupId>
+      <artifactId>kernel</artifactId>
+      <version>7.1.10</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.itextpdf</groupId>
+      <artifactId>io</artifactId>
+      <version>7.1.10</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.itextpdf</groupId>
+      <artifactId>layout</artifactId>
+      <version>7.1.10</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.itextpdf</groupId>
+      <artifactId>forms</artifactId>
+      <version>7.1.10</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.itextpdf</groupId>
+      <artifactId>pdfa</artifactId>
+      <version>7.1.10</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.itextpdf</groupId>
+      <artifactId>sign</artifactId>
+      <version>7.1.10</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.itextpdf</groupId>
+      <artifactId>barcodes</artifactId>
+      <version>7.1.10</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.itextpdf</groupId>
+      <artifactId>font-asian</artifactId>
+      <version>7.1.10</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.itextpdf</groupId>
+      <artifactId>hyph</artifactId>
+      <version>7.1.10</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/com.itextpdf/itext-licensekey -->
+    <dependency>
+      <groupId>com.itextpdf</groupId>
+      <artifactId>itext-licensekey</artifactId>
+      <version>3.0.0</version>
+    </dependency>
   </dependencies>
 
   <build>

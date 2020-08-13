@@ -10,6 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
+@RequestMapping("")
 public class EmployeeController {
     private final EmployeeService employeeService;
     private Employee employee;
