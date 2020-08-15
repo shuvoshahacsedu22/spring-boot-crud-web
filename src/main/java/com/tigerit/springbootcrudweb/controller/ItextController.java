@@ -30,8 +30,13 @@ import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.layout.property.UnitValue;
 import com.itextpdf.layout.property.VerticalAlignment;
 import com.itextpdf.licensekey.LicenseKey;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import org.w3c.dom.Node;
@@ -48,7 +53,7 @@ import java.util.StringTokenizer;
 
 @RestController
 @RequestMapping("/itext")
-public class ItextController extends HttpServlet {
+public class ItextController {
     private  final String DEST = "D:/itex/sample.pdf";
     private static final String FONT = "D:/itex/fonts/Bangla.ttf";
     private static final String IMG = "D:/itex/img.jpg";
@@ -115,24 +120,15 @@ public class ItextController extends HttpServlet {
         writer.close();
         return new ModelAndView("itext");
 }
+    @RequestMapping(value = "/uploadGeneratedPdf", method = RequestMethod.GET, produces = MediaType.APPLICATION_PDF_VALUE)
+    public ResponseEntity<InputStreamResource> generatePdfReport() throws IOException {
+        ByteArrayInputStream bis =new ByteArrayInputStream(getItextChapter5PdfByteArrayOutputStream().toByteArray());
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Disposition", "inline; filename=citiesreport.pdf");
 
-
-    @GetMapping(value = "/uploadGeneratedPdf")
-    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ByteArrayOutputStream baos =  getItextChapter5PdfByteArrayOutputStream();
-        response.setHeader("Expires", "0");
-        response.setHeader("Cache-Control",
-                "must-revalidate, post-check=0, pre-check=0");
-        response.setHeader("Pragma", "public");
-        response.setContentType("application/pdf");
-        response.setContentLength(baos.size());
-        OutputStream os = response.getOutputStream();
-        baos.writeTo(os);
-        baos.toByteArray();
-        os.flush();
-        os.close();
+        return ResponseEntity.ok().headers(headers).contentType(MediaType.APPLICATION_PDF)
+                .body(new InputStreamResource(bis));
     }
-
 
     private ByteArrayOutputStream getItextChapter1PdfByteArrayOutputStream(){
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
