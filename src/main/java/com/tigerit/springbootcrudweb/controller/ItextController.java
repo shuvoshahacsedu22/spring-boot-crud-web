@@ -55,7 +55,7 @@ import java.util.StringTokenizer;
 @RequestMapping("/itext")
 public class ItextController {
     private  final String DEST = "D:/itex/sample.pdf";
-    private static final String FONT = "D:/itex/fonts/Bangla.ttf";
+    private static final String FONT = "D:/itex/fonts/kalpurush.ttf";
     private static final String IMG = "D:/itex/img.jpg";
     private static final String DATA = "D:/itex/united_states.csv";
     private final FontSet set = new FontSet();
@@ -76,7 +76,7 @@ public class ItextController {
         image.setFixedPosition(10,20);
         document.add(image);
         PdfFont f = PdfFontFactory.createFont(FONT, PdfEncodings.IDENTITY_H);
-        String para1= "হ্যালো দেয়ার!";
+        String para1= "হ্যালো দেয়ার, হুউ আর উ? ";
         Paragraph paragraph =new Paragraph().add(new Text(para1).setFont(f));
 
         document.add(paragraph);
@@ -95,7 +95,7 @@ public class ItextController {
         final FontSet set = new FontSet();
         set.addFont("D:/itex/fonts/NotoNaskhArabic-Regular.ttf");
         set.addFont("D:/itex/fonts/OpenSans-Regular.ttf");
-        set.addFont("D:/itex/fonts/Bangla.ttf");
+        set.addFont("D:/itex/fonts/kalpurush.ttf");
         document.setFontProvider(new FontProvider(set));
         document.setProperty(Property.FONT, new String[]{"MyFontFamilyName"});
         for (final String source : sources) {
@@ -122,7 +122,7 @@ public class ItextController {
 }
     @RequestMapping(value = "/uploadGeneratedPdf", method = RequestMethod.GET, produces = MediaType.APPLICATION_PDF_VALUE)
     public ResponseEntity<InputStreamResource> generatePdfReport() throws IOException {
-        ByteArrayInputStream bis =new ByteArrayInputStream(getItextChapter5PdfByteArrayOutputStream().toByteArray());
+        ByteArrayInputStream bis =new ByteArrayInputStream(chapter3EventHandlerWithHeaderFooter().toByteArray());
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Disposition", "inline; filename=citiesreport.pdf");
 
@@ -189,6 +189,7 @@ public class ItextController {
 
         PdfFont font = PdfFontFactory.createFont(StandardFonts.TIMES_ROMAN);
         return new Paragraph("iText is:").setFont(font);
+
     }
     private List chapter1ListItem() throws IOException {
 
