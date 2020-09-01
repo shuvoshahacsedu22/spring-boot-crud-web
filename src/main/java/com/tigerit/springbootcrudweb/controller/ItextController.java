@@ -30,6 +30,11 @@ import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.layout.property.UnitValue;
 import com.itextpdf.layout.property.VerticalAlignment;
 import com.itextpdf.licensekey.LicenseKey;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.tigerit.springbootcrudweb.model.Employee;
+import com.tigerit.springbootcrudweb.model.Voter;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -49,6 +54,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.*;
 import java.net.MalformedURLException;
+import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 @RestController
@@ -138,8 +144,6 @@ public class ItextController {
             PdfDocument pdfDoc = new PdfDocument(writer);
             pdfDoc.addNewPage();
             Document document = new Document(pdfDoc);
-
-
             document.add(chapter1HelloWorld());
             document.add(chapter1Font());
             document.add(chapter1ListItem());
@@ -228,6 +232,8 @@ public class ItextController {
         }
         return table;
     }
+
+
     public void process(Table table, String line, PdfFont font, boolean isHeader) {
         StringTokenizer tokenizer = new StringTokenizer(line, ";");
         while (tokenizer.hasMoreTokens()) {
@@ -374,6 +380,11 @@ public class ItextController {
         pdfDoc.close();
         return baos;
     }
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
+        String contextPath = request.getContextPath();
+        System.out.println(contextPath);
+
+    }
 
 }
